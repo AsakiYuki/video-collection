@@ -17,6 +17,9 @@ jobs:
             - name: Setup Bun
               uses: oven-sh/setup-bun@v2
 
+            - name: Setup FFMPEG
+              uses: FedericoCarboni/setup-ffmpeg@v3
+
             - name: Install dependencies
               run: bun install
 
