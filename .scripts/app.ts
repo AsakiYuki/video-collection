@@ -26,5 +26,7 @@ for (const video of folders.filter((file) => !existVideos.includes(file))) {
     };
 }
 
-fs.writeFileSync("commit", videos.length ? `New videos added: ${videos.length}` : "");
+const deletedVideos = existVideos.filter(file => !folders.includes(file));
+
+fs.writeFileSync("commit", (videos.length || deletedVideos.length) ? `${videos.length} videos added - ${deletedVideos.length} videos deleted` : "");
 fs.writeFileSync("exist.json", JSON.stringify({ videos: [...existVideos, ...videos].filter(file => folders.includes(file)) }, null, 2));
